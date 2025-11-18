@@ -15,10 +15,6 @@ async def handle_file(message: Message):
         await message.answer("Вы не авторизованы. Используйте /login")
         return
 
-    if not message.document:
-        await message.answer("Пришлите файл")
-        return
-
     file_path = f"downloads/{message.document.file_name}"
     os.makedirs("downloads", exist_ok=True)
     file = await message.bot.get_file(message.document.file_id)

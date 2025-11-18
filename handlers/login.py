@@ -36,7 +36,7 @@ async def process_password(message: Message, state: FSMContext):
     ok, token_or_error = await client.login(username, password)
     if ok:
         USER_TOKENS[message.from_user.id] = client
-        await message.answer("Успешно авторизованы!")
+        await message.answer("Успешно авторизованы! Отправьте файл для загрузки")
     else:
         await message.answer(f"Ошибка авторизации: {token_or_error}")
 

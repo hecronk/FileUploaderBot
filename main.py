@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher, Router
 
 from config import TELEGRAM_TOKEN
 from handlers.file_handler import router as file_router
-from handlers.login import router as login_router
+from handlers.login_handler import router as login_router
 
 root_router = Router()
 

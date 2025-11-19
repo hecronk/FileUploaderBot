@@ -12,10 +12,7 @@ async def main():
     bot = Bot(token=TELEGRAM_TOKEN)
     dp = Dispatcher()
 
-    # root router (startup lives here!)
     dp.include_router(root_router)
-
-    # file handlers
     dp.include_router(login_router)
     dp.include_router(file_router)
 

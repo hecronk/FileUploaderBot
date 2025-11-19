@@ -19,14 +19,20 @@ async def cmd_login(message: Message, state: FSMContext):
     await message.answer("Введите логин:")
 
 # Ловим username
-@router.message(LoginStates.waiting_for_username)
+@router.message(
+    LoginStates.waiting_for_username,
+    F.text,
+)
 async def process_username(message: Message, state: FSMContext):
     await state.update_data(username=message.text)
     await state.set_state(LoginStates.waiting_for_password)
     await message.answer("Введите пароль:")
 
 # Ловим пароль и логиним
-@router.message(LoginStates.waiting_for_password)
+@router.message(
+    LoginStates.waiting_for_password,
+    F.text,
+)
 async def process_password(message: Message, state: FSMContext):
     data = await state.get_data()
     username = data["username"]
